@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background-dark text-gray-100 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-accent-600/30 text-white;
+  }
+}
+
+@layer components {
+  .glow-text {
+    text-shadow: 0 0 8px rgba(0, 247, 255, 0.6);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 5px rgba(0, 247, 255, 0.5);
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-12 relative inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-1/2 h-1 bg-gradient-to-r from-accent-500 to-primary-600 rounded-full;
+  }
+
+  .skill-bar {
+    @apply h-2 bg-gray-700 rounded-full overflow-hidden relative;
+  }
+
+  .skill-progress {
+    @apply h-full absolute top-0 left-0 bg-gradient-to-r from-accent-glow to-primary-600 rounded-full;
+  }
+}
+
+/* Particle effect background */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(0, 247, 255, 0.5);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-animation 8s infinite;
+}
+
+@keyframes particle-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  10% {
+    opacity: 0.3;
+    transform: translateY(-10px) scale(1);
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Navbar animation */
+.nav-item.active {
+  @apply text-accent-glow;
+  text-shadow: 0 0 8px rgba(0, 247, 255, 0.6);
+}
+
+/* Gradient line animation */
+.gradient-line {
+  @apply h-px w-full bg-gradient-to-r from-transparent via-accent-glow to-transparent opacity-70;
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
