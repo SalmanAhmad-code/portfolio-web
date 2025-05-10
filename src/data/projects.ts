@@ -44,7 +44,7 @@ export const projectsData: Project[] = [
     category: 'web',
     liveUrl: 'https://comsatshub.vercel.app/',
     githubUrl: 'https://github.com/SalmanAhmad-code/ComsatsHub'
-  },  
+  },
   {
     title: 'KWC Construction Website',
     description: 'A real-world company website featuring project info and AI-powered quotation generation using Gemini API.',
@@ -62,5 +62,23 @@ export const projectsData: Project[] = [
     category: 'web',
     liveUrl: '',
     githubUrl: 'https://github.com/SalmanAhmad-code/Spotify-Clone----Tunify'
+  },
+  {
+    title: 'Quiz System',
+    description: 'A console-based quiz system developed in C that allows users to attempt quizzes, view scores, and test their knowledge in a simple terminal interface.',
+    image: 'https://i.postimg.cc/Zq8LbzqS/Screenshot-2025-05-10-130207.png',
+    technologies: ['C'],
+    category: 'backend',
+    liveUrl: '',
+    githubUrl: 'https://github.com/SalmanAhmad-code/Quiz-Management-System'
+  },
+  {
+    title: 'Rent a Car System',
+    description: 'A GUI-based car rental management application built in Java that handles car booking, returns, and user management with a simple interface.',
+    image: 'https://i.postimg.cc/tJhXZ8dj/Screenshot-2025-05-10-122725.png',
+    technologies: ['Java', 'JavaFX'],
+    category: 'backend',
+    liveUrl: '',
+    githubUrl: 'https://github.com/SalmanAhmad-code/Rent-A-Car-Management-System'
   },
 ];

@@ -109,11 +109,7 @@ const About: React.FC = () => {
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Next.js</span>
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Tailwind CSS</span>
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Node.js</span>
-              <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">HTML / CSS</span>
-              <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Firebase</span>
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Supabase</span>
-              <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Vercel</span>
-              <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Clerk</span>
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">OpenAI API</span>
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Gemini API</span>
               <span className="px-4 py-2 bg-accent-900/30 border border-accent-700/30 rounded-full text-sm text-accent-400">Stripe</span>

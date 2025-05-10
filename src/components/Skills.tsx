@@ -31,6 +31,8 @@ const Skills: React.FC = () => {
       title: 'Backend & APIs',
       icon: <Server className="h-6 w-6 text-accent-glow" />,
       skills: [
+        { name: 'Java', proficiency: 85 },
+        { name: 'C', proficiency: 80 },
         { name: 'Firebase (Auth + Firestore)', proficiency: 90 },
         { name: 'Supabase (Auth + Database)', proficiency: 85 },
         { name: 'Node.js', proficiency: 80 },
