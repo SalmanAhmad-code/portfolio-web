@@ -71,7 +71,7 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="w-full h-96 bg-gradient-to-br from-accent-900/50 to-primary-900/50 rounded-lg overflow-hidden relative">
                 <img 
-                  src="/public/about2.png" 
+                  src="https://i.postimg.cc/3Rf4yxVM/Chat-GPT-Image-May-10-2025-01-46-09-PM.png" 
                   alt="Salman Ahmad" 
                   className="w-full h-full object-cover object-center mix-blend-luminosity opacity-80 hover:opacity-100 transition-opacity duration-500"
                 />
