@@ -9,7 +9,7 @@ export default defineConfig({
   },
   build: {
     // Use esbuild for faster builds, fallback to terser if needed
-    minify: 'esbuild',
+    minify: 'terser',
     // Generate source maps for debugging (disabled for production)
     sourcemap: false,
     // Optimize chunk sizes
