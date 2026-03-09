@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github, ChevronRight } from 'lucide-react';
-import { projectsData } from '../data/projects';
+import { ExternalLink, Github, ChevronRight, X } from 'lucide-react';
+import { projectsData, Project } from '../data/projects';
 
 const Projects: React.FC = () => {
   const [ref, inView] = useInView({
@@ -11,10 +11,43 @@ const Projects: React.FC = () => {
   });
 
   const [activeFilter, setActiveFilter] = useState('all');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const filteredProjects = activeFilter === 'all' 
     ? projectsData 
     : projectsData.filter(project => project.category === activeFilter);
+
+  // Modal handlers
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isModalOpen) {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEscKey);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -152,7 +185,10 @@ const Projects: React.FC = () => {
                     )}
                   </div>
                   
-                  <button className="flex items-center text-accent-500 hover:text-accent-glow group-hover:translate-x-1 transition-all duration-300">
+                  <button 
+                    onClick={() => openModal(project)}
+                    className="flex items-center text-accent-500 hover:text-accent-glow group-hover:translate-x-1 transition-all duration-300"
+                  >
                     <span className="text-sm font-medium">Details</span>
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </button>
@@ -179,6 +215,101 @@ const Projects: React.FC = () => {
             <span>View More on GitHub</span>
           </a>
         </motion.div>
+
+        {/* Project Details Modal */}
+        <AnimatePresence>
+          {isModalOpen && selectedProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              onClick={closeModal}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="bg-background-dark border border-gray-700 rounded-xl max-w-4xl max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Modal Header */}
+                <div className="relative">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-64 object-cover rounded-t-xl"
+                  />
+                  <button
+                    onClick={closeModal}
+                    className="absolute top-4 right-4 p-2 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-black/70 transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-accent-900/70 backdrop-blur-sm text-accent-400 text-sm rounded-full">
+                      {selectedProject.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Modal Content */}
+                <div className="p-8">
+                  <h3 className="text-3xl font-bold text-white mb-4">
+                    {selectedProject.title}
+                  </h3>
+                  
+                  <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                    {selectedProject.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="mb-8">
+                    <h4 className="text-xl font-semibold text-white mb-4">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-3">
+                      {selectedProject.technologies.map((tech, index) => (
+                        <span 
+                          key={index}
+                          className="px-4 py-2 bg-gradient-to-r from-accent-600/20 to-primary-600/20 border border-accent-500/30 text-accent-400 rounded-lg"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap gap-4">
+                    {selectedProject.liveUrl && (
+                      <a 
+                        href={selectedProject.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent-600 to-primary-600 text-white font-medium rounded-lg hover:shadow-glow-sm transition-all duration-300 transform hover:-translate-y-1"
+                      >
+                        <ExternalLink className="h-5 w-5" />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                    
+                    {selectedProject.githubUrl && (
+                      <a 
+                        href={selectedProject.githubUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-1"
+                      >
+                        <Github className="h-5 w-5" />
+                        <span>View Code</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
