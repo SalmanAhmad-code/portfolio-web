@@ -8,8 +8,8 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
-    // Enable minification for better performance
-    minify: 'terser',
+    // Enable minification for better performance (esbuild is faster and built-in)
+    minify: 'esbuild',
     // Generate source maps for debugging
     sourcemap: false,
     // Chunk splitting for better caching
