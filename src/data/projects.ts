@@ -39,7 +39,7 @@ export const projectsData: Project[] = [
   {
     title: 'Comsats Hub',
     description: 'A community portal for COMSATS students featuring event updates, student resources, and announcements with responsive design and a clean UI.',
-    image: 'https://i.postimg.cc/kGnVxV2H/download.png',
+    image: 'https://i.ibb.co/KxtWvkDZ/Comsats-Hub-Student-Portal-03-10-2026-12-00-AM.png',
     technologies: ['Typescript', 'Vite', 'Tailwind CSS', 'Supabase'],
     category: 'web',
     liveUrl: 'https://comsatshub.vercel.app/',

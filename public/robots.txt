@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://salmanahmad-code.dev/sitemap.xml
+
+# Block access to admin or private pages if any
+Disallow: /admin/
+Disallow: /.env
+Disallow: /_next/

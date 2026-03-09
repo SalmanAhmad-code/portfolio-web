@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <a href="https://github.com/salmanAhmad-code" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent-glow transition-colors duration-300">
+          <a href="https://github.com/SalmanAhmad-code" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent-glow transition-colors duration-300">
             <Github className="h-6 w-6" />
           </a>
           <a href="https://linkedin.com/in/salman-ahmad-398274290" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent-glow transition-colors duration-300">

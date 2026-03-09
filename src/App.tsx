@@ -8,6 +8,7 @@ import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleBackground from './components/ui/ParticleBackground';
+import SEO from './components/SEO';
 
 function App() {
   const [activeSection, setActiveSection] = useState<string>('hero');
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background-dark">
+      <SEO />
       <ParticleBackground />
       <Header activeSection={activeSection} />
       <main className="flex-grow">

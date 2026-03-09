@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seo-audit": "npx lighthouse --only-categories=seo,performance,accessibility --output html --output-path ./seo-report.html http://localhost:4173"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
