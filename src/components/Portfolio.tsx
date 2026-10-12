@@ -106,7 +106,7 @@ export const PortfolioHero: React.FC = () => {
           </a>
           <a
             className="text-link"
-            href="/cv.pdf"
+            href="/Salman_Ahmad_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -399,7 +399,7 @@ export const AboutExperience: React.FC = () => (
       </div>
       <a
         className="text-link"
-        href="/cv.pdf"
+        href="/Salman_Ahmad_Resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
       >
